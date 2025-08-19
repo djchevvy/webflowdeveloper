@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivam Gupta - Webflow Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #222;
+      background: #fff;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 0 20px;
+    }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 15px 0 30px;
+    }
+    .btn {
+      background: #fff;
+      color: #2a5298;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #f4f4f4;
+    }
+    section {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .skills, .portfolio, .contact {
+      display: grid;
+      gap: 20px;
+    }
+    .skills {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .skill {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .portfolio {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .project {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .project img {
+      width: 100%;
+      display: block;
+    }
+    .project p {
+      padding: 15px;
+      font-size: 0.95rem;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+    .contact input, .contact textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .contact button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2a5298;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact button:hover {
+      background: #1e3c72;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #f1f1f1;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <h1>Shivam Gupta</h1>
+    <p>Webflow Developer – Building modern, responsive, and SEO-friendly websites</p>
+    <a href="#portfolio" class="btn">View My Work</a>
+    <a href="#contact" class="btn" style="margin-left:10px;">Get in Touch</a>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      I’m Shivam, a Webflow developer passionate about creating seamless, responsive, and user-friendly websites. With experience in design, custom code integrations, and SEO, I help businesses build their digital presence.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills & Services</h2>
+    <div class="skills">
+      <div class="skill">Webflow Development</div>
+      <div class="skill">Custom Code Integrations</div>
+      <div class="skill">SEO Optimization</div>
+      <div class="skill">Website Migration</div>
+      <div class="skill">UI/UX-Friendly Design</div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="project">
+        <img src="https://via.placeholder.com/600x400" alt="Project 1">
+        <p><strong>Project Title</strong> – Short description of the project. <a href="#">View Live</a></p>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/600x400" alt="Project 2">
+        <p><strong>Project Title</strong> – Short description of the project. <a href="#">View Live</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Shivam Gupta | Built with Webflow
+  </footer>
+
+</body>
+</html>
