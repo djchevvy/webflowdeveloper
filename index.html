@@ -1,187 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shivam Gupta - Webflow Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivam Gupta — Webflow Developer</title>
+  <meta name="description" content="Shivam Gupta — Webflow Developer crafting performant, accessible, and future-proof websites." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      color: #222;
-      background: #fff;
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #e6e8ee;
+      --muted: #a6b0cf;
+      --primary: #7c9cff;      /* Indigo/blue */
+      --accent: #64f4ac;       /* Emerald */
+      --warm: #ffb86b;         /* Amber */
+      --ring: rgba(124,156,255,.4);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 22px;
+      --pad: clamp(16px, 2vw, 28px);
+      --gap: clamp(16px, 2vw, 24px);
+      --maxw: 1200px;
     }
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      padding: 0 20px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); background: radial-gradient(1200px 600px at 50% -10%, rgba(124,156,255,.12), transparent 60%), var(--bg);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.6; letter-spacing:.2px;
     }
-    header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3rem;
-      margin: 0;
+    a{color:var(--primary); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 var(--pad)}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 18px; border-radius:14px; background:var(--primary); color:#0b0f1c; 
+      font-weight:600; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.1);
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    header p {
-      font-size: 1.2rem;
-      margin: 15px 0 30px;
+    .btn:hover{transform:translateY(-1px); text-decoration:none}
+    .btn.secondary{background:rgba(255,255,255,.1); color:var(--text); border:1px solid var(--card-border)}
+    .badge{
+      display:inline-block; padding:6px 10px; border-radius:999px; 
+      background:rgba(124,156,255,.16); color:#c9d6ff; border:1px solid rgba(124,156,255,.35);
+      font-size:12px; font-weight:600; letter-spacing:.3px;
     }
-    .btn {
-      background: #fff;
-      color: #2a5298;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
+
+    /* HERO */
+    .hero{
+      position:relative; height:88vh; min-height:560px; overflow:hidden;
+      background:
+        radial-gradient(800px 400px at 70% 30%, rgba(100,244,172,.08), transparent 60%),
+        radial-gradient(1000px 500px at 30% 10%, rgba(255,184,107,.08), transparent 60%);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .btn:hover {
-      background: #f4f4f4;
+    .hero-canvas{position:absolute; inset:0}
+    .hero-overlay{
+      position:relative; z-index:2; display:flex; height:100%;
+      align-items:center;
     }
-    section {
-      max-width: 1000px;
-      margin: 80px auto;
-      padding: 0 20px;
+    .hero h1{
+      font-family:'Poppins', sans-serif; font-weight:800;
+      font-size:clamp(36px, 6vw, 64px); line-height:1.05; margin:10px 0 8px;
+      letter-spacing:.4px;
     }
-    h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 40px;
+    .hero p{color:var(--muted); font-size:clamp(16px, 2.2vw, 20px); max-width:640px; margin:0 0 16px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .vignette{position:absolute; inset:0; pointer-events:none; background:radial-gradient(70% 60% at 50% 10%, rgba(124,156,255,.18), transparent 60%)}
+
+    /* Sections */
+    section{padding: clamp(48px, 8vw, 96px) 0}
+    h2{
+      font-family:'Poppins', sans-serif; font-weight:700; letter-spacing:.3px;
+      font-size:clamp(24px, 3.2vw, 36px); margin:0 0 10px;
     }
-    .skills, .portfolio, .contact {
-      display: grid;
-      gap: 20px;
+    .sub{color:var(--muted); margin-bottom:28px}
+
+    /* Cards / grids */
+    .grid{display:grid; gap:var(--gap)}
+    .grid-2{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .grid-3{grid-template-columns: repeat(3, minmax(0,1fr))}
+    @media (max-width: 900px){ .grid-2, .grid-3 { grid-template-columns:1fr } }
+
+    .card{
+      background:var(--card); border:1px solid var(--card-border);
+      border-radius:var(--radius); padding:var(--pad);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
     }
-    .skills {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .stat{display:flex; align-items:center; gap:12px; color:#cbd6ff}
+    .stat .dot{width:8px; height:8px; border-radius:50%; background: currentColor; box-shadow:0 0 16px currentColor}
+
+    .project{
+      overflow:hidden; padding:0;
     }
-    .skill {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    .project .thumb{
+      position:relative; aspect-ratio: 16/9; overflow:hidden; border-top-left-radius:var(--radius); border-top-right-radius:var(--radius);
     }
-    .portfolio {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .project .thumb img{width:100%; height:100%; object-fit:cover; transform:scale(1.02); opacity:.92; transition: transform .5s ease, opacity .5s ease}
+    .project:hover .thumb img{transform:scale(1.06); opacity:1}
+    .project .meta{padding:18px var(--pad)}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06)}
+
+    /* Contact */
+    .cta{
+      text-align:center; padding: clamp(28px, 6vw, 56px);
+      background:linear-gradient(160deg, rgba(124,156,255,.12), rgba(100,244,172,.10));
+      border:1px solid var(--card-border); border-radius:calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
     }
-    .project {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .project img {
-      width: 100%;
-      display: block;
-    }
-    .project p {
-      padding: 15px;
-      font-size: 0.95rem;
-    }
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: auto;
-    }
-    .contact input, .contact textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .contact button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #2a5298;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .contact button:hover {
-      background: #1e3c72;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #f1f1f1;
-      margin-top: 50px;
-      font-size: 0.9rem;
-    }
+    .cta p{color:var(--muted); max-width:640px; margin:10px auto 0}
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform: translateY(16px); will-change: opacity, transform}
+    .reveal.show{opacity:1; transform:none; transition: opacity .7s ease, transform .7s ease}
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header>
-    <h1>Shivam Gupta</h1>
-    <p>Webflow Developer – Building modern, responsive, and SEO-friendly websites</p>
-    <a href="#portfolio" class="btn">View My Work</a>
-    <a href="#contact" class="btn" style="margin-left:10px;">Get in Touch</a>
+  <!-- HERO -->
+  <header class="hero">
+    <canvas id="scene" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="vignette"></div>
+
+    <div class="hero-overlay">
+      <div class="container">
+        <span class="badge">Available for Projects</span>
+        <h1>Shivam Gupta</h1>
+        <p>Webflow Developer crafting <strong style="color:#cfe0ff">performant</strong>, <strong style="color:#a7ffd7">accessible</strong>, and <strong style="color:#ffd9a6">future-proof</strong> websites. Expert in custom code, CMS, interactions, and SEO.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#work">🚀 View Work</a>
+          <a class="btn secondary" href="#contact">✉️ Get in Touch</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      I’m Shivam, a Webflow developer passionate about creating seamless, responsive, and user-friendly websites. With experience in design, custom code integrations, and SEO, I help businesses build their digital presence.
-    </p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills & Services</h2>
-    <div class="skills">
-      <div class="skill">Webflow Development</div>
-      <div class="skill">Custom Code Integrations</div>
-      <div class="skill">SEO Optimization</div>
-      <div class="skill">Website Migration</div>
-      <div class="skill">UI/UX-Friendly Design</div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-      <div class="project">
-        <img src="https://via.placeholder.com/600x400" alt="Project 1">
-        <p><strong>Project Title</strong> – Short description of the project. <a href="#">View Live</a></p>
+  <!-- STATS / TRUST BAR -->
+  <section>
+    <div class="container grid grid-2 reveal">
+      <div class="card">
+        <div class="grid grid-2">
+          <div class="stat"><span class="dot" style="color:#7c9cff"></span> Webflow</div>
+          <div class="stat"><span class="dot" style="color:#64f4ac"></span> Custom Code</div>
+          <div class="stat"><span class="dot" style="color:#ffb86b"></span> SEO</div>
+          <div class="stat"><span class="dot" style="color:#b389ff"></span> CMS</div>
+        </div>
       </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/600x400" alt="Project 2">
-        <p><strong>Project Title</strong> – Short description of the project. <a href="#">View Live</a></p>
+      <div class="card">
+        <strong style="font-family:Poppins">Highlights</strong>
+        <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted)">
+          <li>Lighthouse 95+ builds, clean semantic HTML, accessible interactions</li>
+          <li>Webflow CMS architectures for blogs, directories, and landing systems</li>
+          <li>GSAP/IX2 micro-interactions and performance-first strategy</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <h2 class="reveal">Selected Work</h2>
+      <p class="sub reveal">Recent projects showcasing speed, clarity, and polish.</p>
+
+      <div class="grid grid-3">
+        <!-- Project Card -->
+        <article class="card project reveal">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="SaaS Landing" loading="lazy">
+          </div>
+          <div class="meta">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <strong>SaaS Landing</strong>
+              <span class="chip">Webflow</span>
+            </div>
+            <p style="margin:8px 0 12px; color:var(--muted)">Conversion-focused landing with CMS and 98 performance score.</p>
+            <div class="chips">
+              <a class="btn" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn secondary" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Startup Site" loading="lazy">
+          </div>
+          <div class="meta">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <strong>Startup Site</strong>
+              <span class="chip">Webflow + Code</span>
+            </div>
+            <p style="margin:8px 0 12px; color:var(--muted)">Animations with IX2 + custom JS for dynamic content.</p>
+            <div class="chips">
+              <a class="btn" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn secondary" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1500522144261-ea64433bbe27?q=80&w=1200&auto=format&fit=crop" alt="Education Portal" loading="lazy">
+          </div>
+          <div class="meta">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <strong>Education Portal</strong>
+              <span class="chip">CMS</span>
+            </div>
+            <p style="margin:8px 0 12px; color:var(--muted)">Scalable CMS with filters, listings, and SEO schema.</p>
+            <div class="chips">
+              <a class="btn" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn secondary" style="padding:8px 12px" href="#" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH / EXPERTISE -->
+  <section>
+    <div class="container grid grid-3 reveal">
+      <div class="card">
+        <strong style="font-family:Poppins; display:block; margin-bottom:6px">Custom Code</strong>
+        <p style="color:var(--muted); margin:0">Advanced interactions, API hooks, components, and Webflow-friendly JavaScript enhancements.</p>
+      </div>
+      <div class="card">
+        <strong style="font-family:Poppins; display:block; margin-bottom:6px">Webflow CMS</strong>
+        <p style="color:var(--muted); margin:0">Structured content models for blogs, directories, and program pages with clean collections.</p>
+      </div>
+      <div class="card">
+        <strong style="font-family:Poppins; display:block; margin-bottom:6px">Performance & SEO</strong>
+        <p style="color:var(--muted); margin:0">Core Web Vitals, semantic HTML, accessibility, metadata, and schema for discoverability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Let’s build something great</h2>
+        <p>Tell me about your project — timeline, goals, and must-haves. I usually respond within 24 hours.</p>
+        <div style="margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+          <a class="btn" href="mailto:shivam@yourdomain.com">✉️ Email Me</a>
+          <a class="btn secondary" href="https://cal.com/" target="_blank" rel="noopener">📅 Book a Call</a>
+          <a class="btn secondary" href="https://github.com/djchevvy" target="_blank" rel="noopener">💻 GitHub</a>
+          <a class="btn secondary" href="https://linkedin.com" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Shivam Gupta | Built with Webflow
+  <footer style="text-align:center; padding:34px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)">
+    © <span id="year"></span> Shivam Gupta — Built with modern web best practices
   </footer>
 
+  <!-- Three.js (tiny scene): rotating torus + spark particles -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script>
+    (function(){
+      const canvas = document.getElementById('scene');
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      const scene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+      camera.position.set(0, 1.2, 6);
+
+      const resize = () => {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        if (canvas.width !== w || canvas.height !== h){
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h; camera.updateProjectionMatrix();
+        }
+      }; window.addEventListener('resize', resize);
+
+      // Lights
+      const amb = new THREE.AmbientLight(0xffffff, 0.6); scene.add(amb);
+      const dir = new THREE.DirectionalLight(0xffffff, 0.9); dir.position.set(5, 6, 4); scene.add(dir);
+      const fill = new THREE.PointLight(0x7c9cff, 1, 12); fill.position.set(-4, 2, -2); scene.add(fill);
+
+      // Torus knot
+      const tkGeom = new THREE.TorusKnotGeometry(1.1, 0.32, 240, 28);
+      const tkMat = new THREE.MeshStandardMaterial({ color: 0x8ab4ff, metalness: .85, roughness: .25 });
+      const torus = new THREE.Mesh(tkGeom, tkMat); torus.position.set(0, .1, 0);
+      scene.add(torus);
+
+      // Wireframe cube
+      const wf = new THREE.LineSegments(
+        new THREE.WireframeGeometry(new THREE.BoxGeometry(2,2,2, 4,4,4)),
+        new THREE.LineBasicMaterial({ color: 0x64f4ac, transparent:true, opacity:.8 })
+      );
+      wf.position.set(3, .6, -1.3); scene.add(wf);
+
+      // Glowing sphere
+      const sGeom = new THREE.SphereGeometry(.8, 32, 32);
+      const sMat = new THREE.MeshStandardMaterial({ color: 0x222222, emissive: 0xffb86b, emissiveIntensity: 1.2, metalness:.3, roughness:.4 });
+      const sphere = new THREE.Mesh(sGeom, sMat); sphere.position.set(-3, .5, -1); scene.add(sphere);
+
+      // Particles (sparkles)
+      const pCount = 300, pGeom = new THREE.BufferGeometry();
+      const positions = new Float32Array(pCount * 3);
+      for (let i=0;i<pCount;i++){
+        positions[i*3+0] = (Math.random()-0.5)*12;
+        positions[i*3+1] = Math.random()*6 - 1.5;
+        positions[i*3+2] = (Math.random()-0.5)*8;
+      }
+      pGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.035, transparent:true, opacity:.85 });
+      const points = new THREE.Points(pGeom, pMat); scene.add(points);
+
+      let t = 0;
+      function animate(){
+        resize();
+        t += 0.01;
+        torus.rotation.x += 0.007;
+        torus.rotation.y += 0.01;
+        torus.scale.setScalar(1 + Math.sin(t*2)*0.06);
+
+        wf.rotation.x += 0.003;
+        wf.rotation.z += 0.004;
+
+        sphere.position.y = .5 + Math.sin(t*1.8)*0.25;
+
+        // subtle particle drift
+        const pos = pGeom.attributes.position.array;
+        for (let i=0;i<pCount;i++){
+          pos[i*3+1] += Math.sin(t + i)*0.0008;
+        }
+        pGeom.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+
+  <!-- Smooth scroll + reveal on scroll (no framework) -->
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+      });
+    });
+
+    // reveal on scroll
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }
+      })
+    }, { threshold:.12, rootMargin:'0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
 </body>
 </html>
